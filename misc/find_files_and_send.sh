@@ -8,8 +8,8 @@ RSYNC_USER="your_username"
 RSYNC_SERVER="your_rsync_server"
 RSYNC_DESTINATION="/path/to/destination"
 
-# Find and compress .jpg files larger than 10MB
-find . -type f -name "*.jpg" -size +10M -print0 | tar -czvf "$ARCHIVE_NAME" --null -T -
+# Find and compress .xls,.xlsx,.doc,.docx
+find . -type f \( -name "*.xls" -o -name "*.xlsx" -o -name "*.doc" -o -name "*.docx" -print0 | tar -czvf "$ARCHIVE_NAME" --null -T -
 
 # Check if compression was successful
 if [ $? -eq 0 ]; then
