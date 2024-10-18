@@ -16,6 +16,8 @@ mkdir -p "$BACKUP_DIR"
 mysqldump -u "$DB_USER" -p"$DB_PASS" "$DB_NAME" > "$BACKUP_DIR/$DB_NAME-$DATE.sql"
 
 # Check if the backup was successful
+# Any application invoke it shell emit non zero values for unsuccessful program invocation 0 = program run successfull
+
 if [ $? -eq 0 ]; then
     echo "Backup successful: $BACKUP_DIR/$DB_NAME-$DATE.sql"
 else
