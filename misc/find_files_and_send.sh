@@ -1,15 +1,15 @@
 #!/bin/bash
 
 # Define the output archive name
-ARCHIVE_NAME="large_jpg_files.tar.gz"
+ARCHIVE_NAME="documents.tar.gz"
 
 # Define the rsync server details
 RSYNC_USER="your_username"
 RSYNC_SERVER="your_rsync_server"
 RSYNC_DESTINATION="/path/to/destination"
 
-# Find and compress .xls,.xlsx,.doc,.docx
-find . -type f \( -name "*.xls" -o -name "*.xlsx" -o -name "*.doc" -o -name "*.docx" -print0 | tar -czvf "$ARCHIVE_NAME" --null -T -
+# Find and compress .xls,.xlsx,.doc,.docx and pdf
+find . -type f \( -name "*.xls" -o -name "*.xlsx" -o -name "*.doc" -o -name "*.docx" -o -name "*.pdf" \) -print0 | tar -czvf "$ARCHIVE_NAME" --null -T -
 
 # Check if compression was successful
 if [ $? -eq 0 ]; then
